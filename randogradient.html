@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Gradiente</title>
+    <style>
+        body { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: sans-serif; transition: 0.5s; }
+        .painel { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: center; }
+        button { padding: 10px 20px; cursor: pointer; background: #333; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="painel">
+        <h2>Gerador de Background</h2>
+        <p id="css-code">linear-gradient(to right, #ffffff, #000000)</p>
+        <button onclick="gerarGradiente()">Gerar Novo Gradiente</button>
+    </div>
+
+    <script>
+        function gerarCorHex() {
+            // Gera uma cor hexadecimal aleatória
+            return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+        }
+
+        function gerarGradiente() {
+            const cor1 = gerarCorHex();
+            const cor2 = gerarCorHex();
+            
+            // Define a direção e as cores
+            const gradiente = `linear-gradient(to right, ${cor1}, ${cor2})`;
+            
+            // Aplica ao estilo do corpo da página
+            document.body.style.background = gradiente;
+            
+            // Atualiza o texto com o código CSS para o usuário copiar
+            document.getElementById('css-code').innerText = gradiente;
+        }
+
+        // Inicia com um gradiente ao carregar
+        gerarGradiente();
+    </script>
+</body>
+</html>
